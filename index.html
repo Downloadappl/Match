@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>هالة X - النسخة الحية</title>
+    <title>هالة X - النسخة المطورة</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -61,12 +61,14 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .top-nav { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 900; font-size: 1.3rem; color: var(--accent-color); }
-        .theme-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); width: 36px; height: 36px; border-radius: 10px; cursor: pointer; }
+        .theme-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .theme-btn:active { transform: scale(0.95); }
 
-        .date-nav { display: flex; justify-content: space-between; align-items: center; }
-        .nav-arrow { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; }
+        .date-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+        .nav-arrow { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .nav-arrow:active { transform: scale(0.95); }
         .date-text { text-align: center; }
         .day-label { font-weight: 800; font-size: 1rem; display: block; }
         .date-sub { font-size: 0.7rem; color: var(--text-secondary); }
@@ -88,6 +90,7 @@
             margin-bottom: 10px;
             display: flex; align-items: center; justify-content: space-between;
             cursor: pointer;
+            transition: all 0.2s;
         }
         .match-item:active { transform: scale(0.98); background: var(--card-hover); }
 
@@ -105,16 +108,104 @@
 
         @keyframes pulse { 50% { opacity: 0.6; } }
 
-        /* Standings Table */
-        .standings-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 15px; }
-        .standings-title { font-weight: 800; font-size: 0.9rem; margin-bottom: 12px; color: var(--accent-color); display: flex; align-items: center; gap: 8px; }
+        /* Standings - League Cards */
+        .standings-container { display: flex; flex-direction: column; gap: 20px; }
+        .league-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        
+        .league-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+        }
+        .league-card:active { transform: scale(0.95); background: var(--card-hover); }
+        .league-card-logo { width: 50px; height: 50px; object-fit: contain; }
+        .league-card-name { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
+        .league-card-badge { font-size: 0.65rem; color: var(--accent-color); font-weight: 600; }
+
+        /* Standings Detail */
+        .standings-detail { animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .standings-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .back-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .back-btn:active { transform: scale(0.95); }
+
+        .standings-title {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        .standings-title img { width: 24px; height: 24px; }
+
+        .standings-table {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .standings-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
         table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
-        th { text-align: right; color: var(--text-secondary); padding: 8px 4px; border-bottom: 1px solid var(--border-color); }
+        th { text-align: right; color: var(--text-secondary); padding: 8px 4px; border-bottom: 1px solid var(--border-color); font-weight: 700; }
         td { padding: 10px 4px; border-bottom: 1px solid rgba(128,128,128,0.05); }
         .rank { font-weight: 800; width: 25px; }
         .team-cell { display: flex; align-items: center; gap: 8px; }
         .team-mini-logo { width: 18px; height: 18px; object-fit: contain; }
         .pts { font-weight: 900; color: var(--text-primary); text-align: center; }
+
+        .view-all-btn {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        .view-all-btn:active { transform: scale(0.98); opacity: 0.9; }
 
         /* Bottom Navigation */
         .bottom-nav {
@@ -126,32 +217,10 @@
         .nav-item {
             display: flex; flex-direction: column; align-items: center; gap: 4px;
             color: var(--text-secondary); cursor: pointer; font-size: 0.7rem; font-weight: 700; flex: 1;
+            transition: color 0.3s;
         }
         .nav-item.active { color: var(--accent-color); }
         .nav-item i { font-size: 1.2rem; }
-
-        /* Full Screen Details */
-        .full-details {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-color); z-index: 2000;
-            display: none; flex-direction: column;
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-        .details-top { padding: 15px; display: flex; align-items: center; border-bottom: 1px solid var(--border-color); background: var(--header-bg); }
-        .back-icon { background: none; border: none; color: var(--text-primary); font-size: 1.2rem; cursor: pointer; padding: 5px 15px; }
-        .details-body { padding: 16px; overflow-y: auto; flex-grow: 1; }
-
-        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 25px 10px; margin-bottom: 15px; text-align: center; }
-        .summary-teams { display: flex; justify-content: space-around; align-items: center; margin-bottom: 15px; }
-        .summary-score { font-size: 2.5rem; font-weight: 900; }
-
-        .grid-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .info-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }
-        .info-card i { color: var(--accent-color); font-size: 1rem; }
-        .info-title { font-size: 0.6rem; color: var(--text-secondary); font-weight: 600; }
-        .info-val { font-size: 0.75rem; font-weight: 700; }
 
         .loader { display: flex; justify-content: center; padding: 50px; color: var(--accent-color); }
         .error { text-align: center; padding: 40px; color: var(--text-secondary); }
@@ -160,7 +229,7 @@
 <body oncontextmenu="return false;">
 
 <div class="container">
-    <header class="header" id="mainHeader">
+    <header class="header">
         <div class="top-nav">
             <span class="logo">هالة X</span>
             <button class="theme-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
@@ -199,18 +268,14 @@
     </nav>
 </div>
 
-<div class="full-details" id="detailsPage">
-    <div class="details-top">
-        <button class="back-icon" onclick="closeDetails()"><i class="fas fa-arrow-right"></i></button>
-        <span style="font-weight: 800;">تفاصيل المباراة</span>
-    </div>
-    <div class="details-body" id="detailsBody"></div>
-</div>
-
 <script>
     let currentDay = new Date();
     const DOMAIN = "https://www.messisporat.com";
     let matchesData = [];
+    let standingsCache = {};
+    let selectedLeague = null;
+    let currentStandingsData = null;
+    let showingAllStandings = false;
 
     // Theme Logic
     const themeBtn = document.getElementById('themeToggle');
@@ -230,8 +295,8 @@
         const today = new Date();
         const diff = Math.round((date - today.setHours(0,0,0,0)) / 86400000);
         if (diff === 0) return "اليوم";
-        if (diff === -1) return "الأمس";
-        if (diff === 1) return "الغد";
+        if (diff === 1) return "غداً";
+        if (diff === -1) return "أمس";
         return date.toLocaleDateString('ar-EG', { weekday: 'long' });
     }
 
@@ -243,11 +308,11 @@
         if (tab === 'matches') {
             document.getElementById('matchesSection').classList.add('active');
             document.getElementById('dateNav').style.display = 'flex';
-            loadMatches();
+            if (!matchesData.length) loadMatches();
         } else {
             document.getElementById('standingsSection').classList.add('active');
             document.getElementById('dateNav').style.display = 'none';
-            loadStandings();
+            if (!Object.keys(standingsCache).length) loadStandings();
         }
     }
 
@@ -299,7 +364,7 @@
                     const time = new Date(m["Time-Start"]).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true });
                     center = `<div style="font-weight:900; font-size:1rem;">${time}</div><div class="status-tag tag-upcoming" style="font-size:0.5rem;">لم تبدأ بعد</div>`;
                 }
-                html += `<div class="match-item" onclick="openDetails(${m["Match-id"]})">
+                html += `<div class="match-item">
                     <div class="team-side"><div class="logo-box"><img src="${DOMAIN}${m["Team-Right"].Logo}" class="logo-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53254.png'"></div><span class="team-name">${m["Team-Right"].Name}</span></div>
                     <div class="match-center">${center}</div>
                     <div class="team-side"><div class="logo-box"><img src="${DOMAIN}${m["Team-Left"].Logo}" class="logo-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53254.png'"></div><span class="team-name">${m["Team-Left"].Name}</span></div>
@@ -310,83 +375,143 @@
         list.innerHTML = html;
     }
 
+    const leaguesData = [
+        
+        { "id": "eng.1", "name": "الدوري الإنجليزي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/23.png", "badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
+    { "id": "esp.1", "name": "الدوري الإسباني", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/15.png", "badge": "🇪🇸" },
+    { "id": "ita.1", "name": "الدوري الإيطالي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/12.png", "badge": "🇮🇹" },
+    { "id": "ger.1", "name": "الدوري الألماني", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/10.png", "badge": "🇩🇪" },
+    { "id": "fra.1", "name": "الدوري الفرنسي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/9.png", "badge": "🇫🇷" },
+    { "id": "por.1", "name": "الدوري البرتغالي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/14.png", "badge": "🇵🇹" },
+    { "id": "ned.1", "name": "الدوري الهولندي", "logo": "https://upload.wikimedia.org/wikipedia/ar/8/88/Eredivisie_logo.png?20170615191208", "badge": "🇳🇱" },
+    { "id": "bra.1", "name": "الدوري البرازيلي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/85.png", "badge": "🇧🇷" },
+    { "id": "arg.1", "name": "الدوري الأرجنتيني", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/1.png", "badge": "🇦🇷" },
+    { "id": "mex.1", "name": "الدوري المكسيكي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/83.png", "badge": "🇲🇽" },
+    { "id": "jpn.1", "name": "الدوري الياباني", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/J.League.svg/960px-J.League.svg.png", "badge": "🇯🇵" },
+    { "id": "rus.1", "name": "الدوري الروسي", "logo": "https://upload.wikimedia.org/wikipedia/ar/9/92/Russian_Premier_League_Logo.png?20231210001724", "badge": "🇷🇺" },
+    { "id": "bel.1", "name": "الدوري البلجيكي", "logo": "https://a.espncdn.com/i/leaguelogos/soccer/500/86.png", "badge": "🇧🇪" }
+
+    ];
+
     async function loadStandings() {
         const list = document.getElementById('standingsList');
         list.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
         
-        // استخدام API حقيقي لجلب الترتيب (ESPN Unofficial API)
-        const leagues = [
-            { id: "eng.1", name: "الدوري الإنجليزي", logo: "https://a.espncdn.com/i/leaguelogos/soccer/500/23.png" },
-            { id: "esp.1", name: "الدوري الإسباني", logo: "https://a.espncdn.com/i/leaguelogos/soccer/500/15.png" },
-            { id: "ita.1", name: "الدوري الإيطالي", logo: "https://a.espncdn.com/i/leaguelogos/soccer/500/12.png" },
-            { id: "ger.1", name: "الدوري الألماني", logo: "https://a.espncdn.com/i/leaguelogos/soccer/500/10.png" },
-            { id: "fra.1", name: "الدوري الفرنسي", logo: "https://a.espncdn.com/i/leaguelogos/soccer/500/9.png" }
-        ];
-
-        let html = '';
-        for (const league of leagues) {
-            try {
-                const url = `https://site.api.espn.com/apis/v2/sports/soccer/${league.id}/standings`;
-                const res = await fetch(url);
-                const data = await res.json();
-                const standings = data.children[0].standings.entries;
-
-                html += `<div class="standings-card">
-                    <div class="standings-title"><img src="${league.logo}" style="width:24px; height:24px;"> ${league.name}</div>
-                    <table>
-                        <thead><tr><th style="width:30px">#</th><th>الفريق</th><th style="text-align:center">لعب</th><th style="text-align:center">نقاط</th></tr></thead>
-                        <tbody>`;
-                standings.slice(0, 10).forEach(entry => {
-                    const team = entry.team;
-                    const stats = entry.stats;
-                    const played = stats.find(s => s.name === "gamesPlayed")?.value || 0;
-                    const points = stats.find(s => s.name === "points")?.value || 0;
-                    html += `<tr>
-                        <td class="rank">${entry.stats.find(s => s.name === "rank")?.value || '-'}</td>
-                        <td class="team-cell"><img src="${team.logos[0].href}" class="team-mini-logo"><span>${team.displayName}</span></td>
-                        <td style="text-align:center">${played}</td>
-                        <td class="pts">${points}</td>
-                    </tr>`;
-                });
-                html += `</tbody></table></div>`;
-            } catch (e) { continue; }
-        }
-        list.innerHTML = html || '<div class="error">فشل تحميل الترتيب الحقيقي</div>';
+        let html = `<div class="standings-container">
+            <div style="margin-bottom: 12px;">
+                <h2 style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 700; margin-bottom: 12px;">اختر الدوري</h2>
+            </div>
+            <div class="league-cards-grid">`;
+        
+        leaguesData.forEach(league => {
+            html += `<div class="league-card" onclick="showLeagueStandings('${league.id}', '${league.name}', '${league.logo}')">
+                <img src="${league.logo}" alt="${league.name}" class="league-card-logo" onerror="this.style.display='none'">
+                <div class="league-card-name">${league.name}</div>
+                <div class="league-card-badge">${league.badge}</div>
+            </div>`;
+        });
+        
+        html += '</div></div>';
+        list.innerHTML = html;
+        standingsCache = { loaded: true };
     }
 
-    function openDetails(id) {
-        const m = matchesData.find(x => x["Match-id"] === id);
-        if (!m) return;
-        const isStarted = m["Match-Status"] !== "لم تبدأ";
-        const score = isStarted ? `${m["Team-Right"].Goal} - ${m["Team-Left"].Goal}` : "لم تبدأ بعد";
-
-        // جلب بيانات حقيقية من الـ API (إذا توفرت)
-        const channel = m["Channel-Name"] || "قريبا ستضاف";
-        const commentator = m["Commentator-Name"] || "قريبا ستضاف";
-        const stadium = m["Stadium-Name"] || "قريبا ستضاف";
-        const round = m["Match-Round"] || "قريبا ستضاف";
-
-        document.getElementById('detailsBody').innerHTML = `
-            <div class="summary-card">
-                <div style="color:var(--text-secondary); font-size:0.7rem; margin-bottom:12px;">${m["Cup-Name"]}</div>
-                <div class="summary-teams">
-                    <div class="team-side"><img src="${DOMAIN}${m["Team-Right"].Logo}" style="width:55px; height:55px; object-fit:contain;"><div style="font-weight:800; margin-top:8px; font-size:0.85rem;">${m["Team-Right"].Name}</div></div>
-                    <div class="summary-score" style="${!isStarted ? 'font-size:1.2rem' : ''}">${score}</div>
-                    <div class="team-side"><img src="${DOMAIN}${m["Team-Left"].Logo}" style="width:55px; height:55px; object-fit:contain;"><div style="font-weight:800; margin-top:8px; font-size:0.85rem;">${m["Team-Left"].Name}</div></div>
+    async function showLeagueStandings(leagueId, leagueName, leagueLogo) {
+        const list = document.getElementById('standingsList');
+        list.innerHTML = `<div class="standings-detail">
+            <div class="standings-header">
+                <button class="back-btn" onclick="loadStandings()"><i class="fas fa-arrow-right"></i></button>
+                <div class="standings-title">
+                    <img src="${leagueLogo}" alt="${leagueName}" onerror="this.style.display='none'">
+                    <span>${leagueName}</span>
                 </div>
-                <div class="status-tag ${m["Match-Status"] === 'جارية الآن' ? 'tag-live' : 'tag-finished'}" style="display:inline-block; padding:4px 12px;">${m["Match-Status"]}</div>
             </div>
-            <div class="grid-info">
-                <div class="info-card"><i class="fas fa-tv"></i><span class="info-title">القناة الناقلة</span><span class="info-val">${channel}</span></div>
-                <div class="info-card"><i class="fas fa-microphone"></i><span class="info-title">المعلق</span><span class="info-val">${commentator}</span></div>
-                <div class="info-card"><i class="fas fa-stadium"></i><span class="info-title">الملعب</span><span class="info-val">${stadium}</span></div>
-                <div class="info-card"><i class="fas fa-info-circle"></i><span class="info-title">نوع اللقاء</span><span class="info-val">${round}</span></div>
-            </div>
-        `;
-        document.getElementById('detailsPage').style.display = 'flex';
+            <div class="loader"><i class="fas fa-spinner fa-spin fa-2x"></i></div>
+        </div>`;
+
+        try {
+            const url = `https://site.api.espn.com/apis/v2/sports/soccer/${leagueId}/standings`;
+            const res = await fetch(url);
+            const data = await res.json();
+            const standings = data.children[0].standings.entries;
+            currentStandingsData = { standings, leagueName, leagueLogo, leagueId };
+            showingAllStandings = false;
+            renderLeagueStandings(leagueName, leagueLogo, standings);
+        } catch (e) {
+            list.innerHTML = `<div class="standings-detail">
+                <div class="standings-header">
+                    <button class="back-btn" onclick="loadStandings()"><i class="fas fa-arrow-right"></i></button>
+                    <div class="standings-title">
+                        <img src="${leagueLogo}" alt="${leagueName}" onerror="this.style.display='none'">
+                        <span>${leagueName}</span>
+                    </div>
+                </div>
+                <div class="error">فشل تحميل الترتيب</div>
+            </div>`;
+        }
     }
 
-    function closeDetails() { document.getElementById('detailsPage').style.display = 'none'; }
+    function renderLeagueStandings(leagueName, leagueLogo, standings) {
+        const list = document.getElementById('standingsList');
+        const displayStandings = showingAllStandings ? standings : standings.slice(0, 10);
+        
+        let html = `<div class="standings-detail">
+            <div class="standings-header">
+                <button class="back-btn" onclick="loadStandings()"><i class="fas fa-arrow-right"></i></button>
+                <div class="standings-title">
+                    <img src="${leagueLogo}" alt="${leagueName}" onerror="this.style.display='none'">
+                    <span>${leagueName}</span>
+                </div>
+            </div>
+            <div class="standings-table">
+                <div class="standings-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30px">#</th>
+                                <th>الفريق</th>
+                                <th style="text-align: center">لعب</th>
+                                <th style="text-align: center">نقاط</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+        
+        displayStandings.forEach((entry, idx) => {
+            const team = entry.team;
+            const stats = entry.stats;
+            const played = stats.find(s => s.name === "gamesPlayed")?.value || 0;
+            const points = stats.find(s => s.name === "points")?.value || 0;
+            const rank = entry.stats.find(s => s.name === "rank")?.value || '-';
+            
+            html += `<tr>
+                <td class="rank">${rank}</td>
+                <td class="team-cell">
+                    <img src="${team.logos[0].href}" alt="${team.displayName}" class="team-mini-logo">
+                    <span>${team.displayName}</span>
+                </td>
+                <td style="text-align: center">${played}</td>
+                <td class="pts">${points}</td>
+            </tr>`;
+        });
+        
+        html += `</tbody></table></div></div>`;
+        
+        if (standings.length > 10) {
+            const btnText = showingAllStandings ? 'إخفاء' : `عرض الكل (${standings.length})`;
+            html += `<button class="view-all-btn" onclick="toggleAllStandings()">${btnText}</button>`;
+        }
+        
+        html += `</div>`;
+        list.innerHTML = html;
+    }
+
+    function toggleAllStandings() {
+        if (currentStandingsData) {
+            showingAllStandings = !showingAllStandings;
+            renderLeagueStandings(currentStandingsData.leagueName, currentStandingsData.leagueLogo, currentStandingsData.standings);
+        }
+    }
+
     function changeDate(n) { currentDay.setDate(currentDay.getDate() + n); loadMatches(); }
     loadMatches();
 </script>
