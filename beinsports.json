@@ -1,47 +1,101 @@
 [
   {
-    "name": "Bein Sports 1",
-    "stream": "http://135.125.109.73:9000/beinsport1_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b1.png"
+    "id": "-6000991",
+    "title": "Bein Sport 1",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport1_.m3u8",
+    "description": "قناة بي إن سبورت 1",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b1.png"
   },
   {
-    "name": "Bein sports 2",
-    "stream": "http://135.125.109.73:9000/beinsport2_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b2.png"
+    "id": "-6000992",
+    "title": "Bein Sport 2",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport2_.m3u8",
+    "description": "قناة بي إن سبورت 2",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b2.png"
   },
   {
-    "name": "Bein sports 3",
-    "stream": "http://135.125.109.73:9000/beinsport3_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b3.png"
+    "id": "-6000993",
+    "title": "Bein Sport 3",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport3_.m3u8",
+    "description": "قناة بي إن سبورت 3",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b3.png"
   },
   {
-    "name": "Bein sports 4",
-    "stream": "http://135.125.109.73:9000/beinsport4_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b4.png"
+    "id": "-6000994",
+    "title": "Bein Sport 4",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport4_.m3u8",
+    "description": "قناة بي إن سبورت 4",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b4.png"
   },
   {
-    "name": "Bein sports 5",
-    "stream": "http://135.125.109.73:9000/beinsport5_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b5.png"
+    "id": "-6000995",
+    "title": "Bein Sport 5",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport5_.m3u8",
+    "description": "قناة بي إن سبورت 5",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b5.png"
   },
   {
-    "name": "Bein sports 6",
-    "stream": "http://135.125.109.73:9000/beinsport6_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b6.png"
+    "id": "-6000996",
+    "title": "Bein Sport 6",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport6_.m3u8",
+    "description": "قناة بي إن سبورت 6",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b6.png"
   },
   {
-    "name": "Bein sports 7",
-    "stream": "http://135.125.109.73:9000/beinsport7_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b7.png"
+    "id": "-6000997",
+    "title": "Bein Sport 7",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport7_.m3u8",
+    "description": "قناة بي إن سبورت 7",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b7.png"
   },
   {
-    "name": "Bein sports 8",
-    "stream": "http://135.125.109.73:9000/beinsport8_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b8.png"
+    "id": "-6000998",
+    "title": "Bein Sport 8",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport8_.m3u8",
+    "description": "قناة بي إن سبورت 8",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b8.png"
   },
   {
-    "name": "Bein sports 9",
-    "stream": "http://135.125.109.73:9000/beinsport9_.m3u8",
-    "logo": "https://iraqapps.github.io/earthlinksport/img/b9.png"
+    "id": "-6000999",
+    "title": "Bein Sport 9",
+    "filter": "sport",
+    "imgurl": "bein",
+    "channelurl": "http://135.125.109.73:9000/beinsport9_.m3u8",
+    "description": "قناة بي إن سبورت 9",
+    "type": "m3u8",
+    "isOnline": "1",
+    "urlImage": "https://iraqapps.github.io/earthlinksport/img/b9.png"
   }
 ]
